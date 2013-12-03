@@ -115,5 +115,35 @@
 			</div>
 			
 		</div>
+		<script type="text/javascript" src= "js/jquery.js"></script>
+		<script type="text/javascript">
+		var $submit =$(".submit input");
+		function requiredFilledIn() {
+			if(true) $submit.attr("disabled", "disabled");
+			else $submit.removeAttr("disabled");
+		}
+
+
+
+		$("#form span").hide();
+		$("input, textarea").focus(function() {
+			$(this).next().fadeIn("slow");
+		}).blur(function() {
+			$(this).next().fadeOut("slow");
+		}).keyup(function() {
+			// Check all required fields.
+			requiredFilledIn();
+
+		});
+
+		$("#email").keyup(function (){
+			//Check for a valid email.
+			if(false) $(this).next().removeClass("error").addClass("valid");
+			else $(this).next().removeClass("valid").addClass("error");
+		
+			});
+		requiredFilledIn();
+
+		</script>
 	</body>
 	</html>
