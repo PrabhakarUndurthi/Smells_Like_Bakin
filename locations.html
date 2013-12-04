@@ -45,8 +45,7 @@
 				<p>Local: <span class="contact">407-555-5555</span><br>Toll Free: <span class="contact">1-800-CUP-CAKE</span><br>
 					Email us: <a href="#">bakeon@smellslikebakin.com</a></p>
 					<p class="static_map">
-						<img src="http://maps.googleapis.com/maps/api/staticmap?parameters?key=AIzaSyBYeYwwvk0tI1p0cmsLRIhj09SS4I9pI5o&size=400x300
-                     &sensor=false&markers=622+E+Washington+Street,+Suite+240+Orlando,+FL+32801" alt="622 E Washington Street, Suite 240, Orlando, FL 32801">
+						<img src="http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAq3k9MvDbfTDMsx6tOycIs0-HWtRDY0Rw&size=400x300&sensor=false&markers=622+E+Washington+Street,+Suite+240+Orlando,+FL+32801" alt="622 E Washington Street, Suite 240, Orlando, FL 32801">
 					</p>
 					<address>
 						622 E Washington Street, Suite 240<br>Orlando, FL 32801
@@ -57,7 +56,7 @@
 					<p>Local: <span class="contact">503-555-5555</span><br>Toll Free: <span class="contact">1-800-CUP-CAKE</span><br>
 						Email us: <a href="#">bakeon@smellslikebakin.com</a></p>
 						<p class="static_map">
-							<img src="http://maps.googleapis.com/maps/api/staticmap?parameters?key=AIzaSyBYeYwwvk0tI1p0cmsLRIhj09SS4I9pI5o&size=400x300&sensor=false&markers=70+Northwest+Couch+Street+Portland,+Oregon+97209" alt="70 Northwest Couch Street<br>Portland, Oregon 97209">
+							<img src="http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAq3k9MvDbfTDMsx6tOycIs0-HWtRDY0Rw&size=400x300&sensor=false&markers=70+Northwest+Couch+Street+Portland,+Oregon+97209" alt="70 Northwest Couch Street<br>Portland, Oregon 97209">
 						</p>
 						<address>
 							70 Northwest Couch Street<br>Portland, Oregon 97209
@@ -105,49 +104,10 @@
 					</div>
 
 				</div>
-				<script type="text/javascript" src="js/jquery.js"></script>
-				<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq3k9MvDbfTDMsx6tOycIs0-HWtRDY0Rw&sensor=false">
-				</script>
+				<script type="text/javascript" src="js/jquery.js"></script>			
 				<script type="text/javascript">
-				$("#locations").prepend('<div id="map"></div>');
+				$("#locations").prepend('<iframe id="map" src="map.html" seamless="seamless" scrolling="no"></iframe>');
 				$(".static_map").remove();
-				var map;
-				var bounds;
-				var geocoder;
-				var center;
-				function initialize() {
-					var mapOptions = {
-						center: new google.maps.LatLng(-34.397, 150.644),
-						zoom: 8,
-						mapTypeId: google.maps.MapTypeId.ROADMAP
-					};
-					map = new google.maps.Map(document.getElementById("map"),
-						mapOptions);
-					geocoder = new google.maps.Geocoder();
-					bounds = new google.maps.LatLngBounds();
-				}
-				function addMarkerToMap(location){
-					var marker = new google.maps.Marker({map: map, position: location});
-					bounds.extend(location);
-					map.fitBounds(bounds);
-				}
-				initialize();
-
-				$("address").each(function(){
-					var $address = $(this);
-					geocoder.geocode({address: $address.text()}, function(results, status){
-						if(status == google.maps.GeocoderStatus.OK) addMarkerToMap(results[0].geometry.location);
-					});
-				});
-
-				google.maps.event.addDomListener(map, "idle", function(){
-					center = map.getCenter();
-				});
-
-				$(window).resize(function(){
-					map.setCenter(center);
-				});
-
 				</script>
 			</body>
 			</html>
